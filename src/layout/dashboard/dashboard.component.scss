@@ -1,0 +1,26 @@
+.px-6 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.custom-col {
+  flex: 0 0 20%;
+  max-width: 20%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  @media only screen and (max-width: 1128px) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  @media only screen and (max-width: 768px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.generateBtn {
+  background: #232f92;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+}

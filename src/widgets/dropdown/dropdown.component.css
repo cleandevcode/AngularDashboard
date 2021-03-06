@@ -1,0 +1,9 @@
+.form-label {
+  width: 100%;
+}
+.form-control {
+  border: unset;
+  width: 100%;
+  padding: unset;
+  color: #8181a5;
+}

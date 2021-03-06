@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label class="form-label border-bottom-1">
+    <span class="label-text" *ngIf="label">{{ label }}</span>
+    <div class="d-flex">
+      <input
+        class="form-control"
+        maxLength="20"
+        type="text"
+        [placeholder]="placeholder"
+        [(ngModel)]="value"
+        (ngModelChange)="change($event)"
+      />
+    </div>
+  </label>
+</div>

@@ -1,0 +1,33 @@
+/* Add application styles & imports to this file! */
+
+@import "~bootstrap";
+@import "~@angular/material/theming";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@include mat-core();
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  font-family: "Lato";
+}
+
+body {
+  min-height: 100vh;
+  section {
+    height: 100%;
+  }
+}
+
+.border-bottom-1 {
+  border-bottom: 1px solid #f0f0f3;
+}
+
+.form-control:focus {
+  border: unset;
+  box-shadow: unset;
+}
+
+.label-text {
+  color: #8181a5;
+}
