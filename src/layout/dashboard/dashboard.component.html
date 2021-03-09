@@ -19,51 +19,63 @@
             <app-dropdown
               formControlName="provider"
               label="Provider"
-              [options]="provider"
+              [options]="providerOpt"
+              id="provider"
+              (selected)="getValue($event)"
             ></app-dropdown>
           </div>
           <div class="custom-col">
             <app-dropdown
               formControlName="requestType"
               label="Request Type"
-              [options]="requestType"
+              [options]="requestTypeOpt"
             ></app-dropdown>
           </div>
           <div class="custom-col">
             <app-dropdown
               formControlName="insurance"
               label="Insurance Company"
-              [options]="insurance"
+              [options]="insuranceOpt"
             ></app-dropdown>
           </div>
           <div class="custom-col">
             <app-datepicker
               formControlName="startDate"
               label="Start Date"
+              id="startDate"
+              (selected)="getValue($event)"
             ></app-datepicker>
           </div>
           <div class="custom-col">
             <app-datepicker
               formControlName="endDate"
               label="End Date"
+              id="endDate"
+              (selected)="getValue($event)"
             ></app-datepicker>
           </div>
           <div class="custom-col">
             <app-dropdown
               formControlName="transaction"
               label="Transaction Status"
-              [options]="transaction"
+              [options]="transactionOpt"
+              id="status"
+              (selected)="getValue($event)"
             ></app-dropdown>
           </div>
           <div class="custom-col">
             <app-input
               formControlName="patient_lastName"
               label="Patient Last Name"
+              id="lastName"
+              (selected)="getValue($event)"
             ></app-input>
           </div>
         </div>
-        <button class="btn btn-primary generateBtn">Generate</button>
-        <app-claim-table></app-claim-table>
+        <button class="btn btn-primary generateBtn" (click)="generate()">
+          Generate
+        </button>
+        <app-claim-table [dataSource]="tableData"></app-claim-table>
       </div>
 
       <div class="flex-grow-1 overflow-auto">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-datepicker',
@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DatepickerComponent implements OnInit {
 
   @Input() label = '';
-
+  @Input() id = '';
+  @Output() selected: EventEmitter<any> = new EventEmitter<any>();
   value = ''
   constructor() { }
 
@@ -16,7 +17,11 @@ export class DatepickerComponent implements OnInit {
   }
 
   change(value: string): void {
-    console.log(value)
+    let data = {
+      value: value,
+      id: this.id
+    }
+    this.selected.emit(data);
   }
 
 }

@@ -6,99 +6,103 @@
       Export
     </a>
   </div>
-  <mat-table #table [dataSource]="dataSource">
-    <!--- Note that these columns can be defined in any order.
+  <div *ngIf="dataSource.length === 0">No records found</div>
+
+  <div *ngIf="dataSource.length > 0">
+    <mat-table #table [dataSource]="dataSource">
+      <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="client">
-      <mat-header-cell *matHeaderCellDef> Client </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <img [src]="element.client.avatar" />
-        <div>
-          <p class="font-weight-bold">{{ element.client.name }}</p>
-          <p>
-            {{ element.client.ID }}
-          </p>
-        </div>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="client">
+        <mat-header-cell *matHeaderCellDef> Client </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <img [src]="element.client.avatar" />
+          <div>
+            <p class="font-weight-bold">{{ element.client.name }}</p>
+            <p>
+              {{ element.client.ID }}
+            </p>
+          </div>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="provider">
-      <mat-header-cell *matHeaderCellDef> Provider </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="font-weight-bold">
-        {{ element.provider }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="provider">
+        <mat-header-cell *matHeaderCellDef> Provider </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="font-weight-bold">
+          {{ element.provider }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="order">
-      <mat-header-cell *matHeaderCellDef> Order </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="d-block">
-        <p class="mb-0">{{ element.order }} items</p>
-        <a href="#">View Details</a>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="order">
+        <mat-header-cell *matHeaderCellDef> Order </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="d-block">
+          <p class="mb-0">{{ element.order }} items</p>
+          <a href="#">View Details</a>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="claim_status">
-      <mat-header-cell *matHeaderCellDef> Claim Status </mat-header-cell>
-      <mat-cell
-        *matCellDef="let element"
-        [ngClass]="
-          element.claim_status === 'Success'
-            ? ' success'
-            : element.claim_status === 'Failed'
-            ? 'failed'
-            : ''
-        "
-      >
-        {{ element.claim_status }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="claim_status">
+        <mat-header-cell *matHeaderCellDef> Claim Status </mat-header-cell>
+        <mat-cell
+          *matCellDef="let element"
+          [ngClass]="
+            element.claim_status === 'Success'
+              ? ' success'
+              : element.claim_status === 'Failed'
+              ? 'failed'
+              : ''
+          "
+        >
+          {{ element.claim_status }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="processed_by">
-      <mat-header-cell *matHeaderCellDef> Processed By </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="d-block">
-        <p class="font-weight-bold">{{ element.processed_by.name }}</p>
-        <a [href]="'mailto:' + element.processed_by.email">{{
-          element.processed_by.email
-        }}</a>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="processed_by">
+        <mat-header-cell *matHeaderCellDef> Processed By </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="d-block">
+          <p class="font-weight-bold">{{ element.processed_by.name }}</p>
+          <a [href]="'mailto:' + element.processed_by.email">{{
+            element.processed_by.email
+          }}</a>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="font-weight-bold">
-        {{ element.date }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="font-weight-bold">
+          {{ element.date }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="subtotal">
-      <mat-header-cell *matHeaderCellDef class="abs-center">
-        Subtotal
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="font-weight-bold abs-center">
-        ${{ element.subtotal }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="subtotal">
+        <mat-header-cell *matHeaderCellDef class="abs-center">
+          Subtotal
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="font-weight-bold abs-center">
+          ${{ element.subtotal }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="covered">
-      <mat-header-cell *matHeaderCellDef class="abs-center">
-        Covered
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="font-weight-bold abs-center">
-        ${{ element.covered }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="covered">
+        <mat-header-cell *matHeaderCellDef class="abs-center">
+          Covered
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="font-weight-bold abs-center">
+          ${{ element.covered }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="total">
-      <mat-header-cell *matHeaderCellDef class="abs-right">
-        Total
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="font-weight-bold abs-right">
-        ${{ element.total }}
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef class="abs-right">
+          Total
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="font-weight-bold abs-right">
+          ${{ element.total }}
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
 </div>
